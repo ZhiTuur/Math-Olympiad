@@ -1,4 +1,4 @@
-# Math-Olympiad
+# Math Olympiad
 Everything MO-related
 
 
