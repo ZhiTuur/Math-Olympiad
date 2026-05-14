@@ -13,4 +13,4 @@ General documents in connection with MO without containing actual math is stored
 My own modular LaTeX style package, TLZLaTexPack.sty is stored here.
 
 **.gitignore:**
-Since I chose to delete temporary files; I let Git ignore them for some extra efficiency.
+Since I chose to delete temporary files; I let Git ignore them for some extra efficiency when compiling.
