@@ -1,0 +1,203 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This style file is designed for Olympiad math training by Zhiheng Luo.
+% Read manifesto at:
+%
+% GitHub: https://github.com/ZhihengLuo/tlz-latex (Update this link!)
+% YouTube: TLZmatholympiads
+% Discord: tlz_tlz
+% Gmail: tlzmatholympiads@gmail.com
+%
+% Heavily inspired by Evan.sty: https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.st
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ===================================================================
+% PACKAGE METADATA
+% ===================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{TLZLaTeXPack}[2026/05/10 TLZLaTeXPack]
+
+% ===================================================================
+% REQUIRED PACKAGES
+% ===================================================================
+
+\RequirePackage{fancyhdr}      % Custom headers and footers
+\RequirePackage{lastpage}      % Reference to last page
+\RequirePackage[margin=1.2in,top=1.8in,bottom=1.8in]{geometry}  % Page layout
+\RequirePackage{amsmath}       % Advanced math
+\RequirePackage{amssymb}       % Math symbols
+\RequirePackage{amsthm}        % Theorem environments
+\RequirePackage{mathtools}     % Extended math tools
+\RequirePackage{enumitem}      % List customization
+\RequirePackage{iftex}         % Detect TeX engine
+\RequirePackage{titlesec}      % Section formatting
+\RequirePackage[dvipsnames]{xcolor}  % Extended color support
+\RequirePackage{hyperref}      % Hyperlinks
+
+% ===================================================================
+% LANGUAGE & ENCODING SUPPORT
+% ===================================================================
+
+\ifPDFTeX
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage{CJKutf8}
+  \newcommand{\TLZChinese}[1]{\begin{CJK*}{UTF8}{gbsn}#1\end{CJK*}}
+\else
+  \RequirePackage{fontspec}
+  \RequirePackage{xeCJK}
+  \setCJKmainfont{SimSun}
+  \newcommand{\TLZChinese}[1]{#1}
+\fi
+
+% ===================================================================
+% COLOR DEFINITIONS & HYPERLINK SETUP
+% ===================================================================
+
+\definecolor{TLZDeepIndigo}{HTML}{2B1B6B}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=MidnightBlue,
+  urlcolor=TLZDeepIndigo,
+  citecolor=ForestGreen,
+  pdfborder={0 0 0}
+}
+
+% ===================================================================
+% CUSTOM COMMANDS & METADATA
+% ===================================================================
+
+\newcommand{\authorname}{Zhiheng Luo}
+\newcommand{\chinesename}{罗之衡}
+\newcommand{\TLZFullAuthor}{\authorname\ \TLZChinese{\chinesename}}
+\newcommand{\ManifestoRedirctLink}{https://github.com/ZhihengLuo/tlz-latex}
+\newcommand{\pdftitle}{Untitled}
+\newcommand{\createddate}{May 10, 2026}
+\newcommand{\updateddate}{May 14, 2026}
+
+% Set title page date to creation date by default
+\makeatletter
+\AtBeginDocument{%
+  \date{\createddate}%
+}
+\makeatother
+
+% ===================================================================
+% PAGE LAYOUT & HEADER/FOOTER CONFIGURATION
+% ===================================================================
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.7pt}
+
+% Header line styling
+\newlength{\TLZHeaderRuleOverhang}
+\setlength{\TLZHeaderRuleOverhang}{0pt}
+\fancyheadoffset[L,R]{0pt}
+\renewcommand{\headrule}{%
+  \raisebox{2.5pt}{%
+    \makebox[0pt][l]{%
+      \hspace*{-\TLZHeaderRuleOverhang}%
+      \color{black}\rule{\dimexpr\headwidth+2\TLZHeaderRuleOverhang\relax}{\headrulewidth}%
+    }%
+  }%
+}
+
+% Header content: Left (author), Center (title), Right (dates)
+\fancyhead[L]{\small \textbf{\authorname}\hspace{2pt}\tiny \href{\ManifestoRedirctLink}{\fcolorbox{red}{white}{\textcolor{red}{(click me)}}}}
+\fancyhead[C]{\small \textbf{\pdftitle}}
+\fancyhead[R]{\tiny \begin{tabular}{r@{}}Updated \updateddate\\Created \createddate\end{tabular}}
+
+% Footer: centered page number
+\fancyfoot[C]{\small \thepage}
+
+% Header geometry tuning
+\setlength{\headheight}{28pt}   % Space for the text in the header
+\setlength{\headsep}{15pt}      % Space between line and content
+\addtolength{\topmargin}{-34pt} % Move whole header higher up the page
+
+% ===================================================================
+% SECTION & HEADING FORMATTING
+% ===================================================================
+
+\titleformat{\section}
+  {\Large\bfseries\boldmath\color{TLZDeepIndigo}}
+  {\S\thesection}
+  {0.6em}
+  {}
+\titlespacing*{\section}{0pt}{1.4ex plus .4ex minus .2ex}{0.8ex plus .2ex}
+
+% ===================================================================
+% THEOREM ENVIRONMENTS
+% ===================================================================
+
+% Define custom theorem styles
+\newtheoremstyle{TLZPlain}
+  {8pt}{8pt}
+  {\itshape}
+  {}
+  {\bfseries\color{TLZDeepIndigo}}
+  {.}
+  {.5em}
+  {}
+
+\newtheoremstyle{TLZDefinition}
+  {8pt}{8pt}
+  {}
+  {}
+  {\bfseries\color{MidnightBlue}}
+  {.}
+  {.5em}
+  {}
+
+\newtheoremstyle{TLZRemark}
+  {6pt}{6pt}
+  {}
+  {}
+  {\bfseries\color{ForestGreen}}
+  {.}
+  {.5em}
+  {}
+
+% Plain style theorems (italicized statements)
+\theoremstyle{TLZPlain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+
+% Definition style theorems (upright text)
+\theoremstyle{TLZDefinition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+
+% Remark style (non-numbered)
+\theoremstyle{TLZRemark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+
+% ===================================================================
+% CONVENIENCE COMMANDS & MACROS
+% ===================================================================
+
+% List formatting
+\setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=0pt}
+
+% Number system shortcuts
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+% Mathematical operator shortcuts
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\bracket}[1]{\left[ #1 \right]}
