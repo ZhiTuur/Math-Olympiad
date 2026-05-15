@@ -15,7 +15,7 @@ Find my math documents in here.
 General documents in connection with MO without containing actual math is stored here; eg. my manifesto
 
 **Style file:**
-My own modular LaTeX style package, TLZLaTexPack.sty is stored here.
+My own modular LaTeX style package, TLZLaTexPack.sty is stored here. Commiting to GitHub will NOT update the package version, see line 20 in code to see how to update.
 
 **.gitignore:**
 MiKTeX compiler creates temporary files; I let Git ignore them for some extra efficiency when compiling and decluttering of workspace.
