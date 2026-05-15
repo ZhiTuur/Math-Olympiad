@@ -1,5 +1,4 @@
-# Ignore pdf
 *.aux
-*.log
-*.fls
 *.fdb_latexmk
+*.fls
+*.log
