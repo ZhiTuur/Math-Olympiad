@@ -8,11 +8,14 @@ Everything MO-related
 
 ### TECHNICAL:
 
+**General:** 
+General documents in connection with MO without containing actual math is stored here; eg. my manifesto.
+
+**Images:**
+This is used to host images I refer to if diagrams are not convenient to be put on pdf's themselves.
+
 **Main:**
 Find my math documents in here.
-
-**General:** 
-General documents in connection with MO without containing actual math is stored here; eg. my manifesto
 
 **Style file:**
 My own modular LaTeX style package, TLZLaTexPack.sty is stored here. Commiting to GitHub will NOT update the package version, see line 20 in code to see how to update.
