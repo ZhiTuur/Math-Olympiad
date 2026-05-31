@@ -234,16 +234,3 @@
 \newcommand{\bracket}[1]{\left[ #1 \right]}
 
 % ===================================================================
-% CYCLIC SUM WITH SQUIGGLY UNDERLINE
-% ===================================================================
-% Usage: \cycsum{expression}  or  \cycsum[text]{expression}
-% The squiggly line appears beneath "cyc" under the sum.
-% Examples:
-%   \cycsum{\frac{a}{b}}          -> sum_{cyc} with squiggly line, then fraction
-%   \cycsum[cyc]{\frac{a}{b}}     -> sum_{cyc} with squiggly line, then fraction
-%   \cycsum[sym]{\frac{a}{b}}     -> sum_{sym} with squiggly line, then fraction
-% ===================================================================
-
-\newcommand{\cycsum}[2][cyc]{%
-  \sum_{\substack{\text{#1}\\[-2pt] \sim}} #2%
-}
