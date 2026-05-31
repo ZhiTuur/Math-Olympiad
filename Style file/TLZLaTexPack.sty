@@ -44,6 +44,9 @@
 \RequirePackage{titlesec}      % Section formatting
 \RequirePackage[dvipsnames]{xcolor}  % Extended color support
 \RequirePackage{hyperref}      % Hyperlinks
+\RequirePackage{mdframed}      % Framed boxes for theorems
+\RequirePackage{tikz}          % Vector graphics / diagrams
+\usetikzlibrary{calc,through,intersections}
 
 % ===================================================================
 % LANGUAGE & ENCODING SUPPORT
@@ -92,6 +95,9 @@
   \date{\createddate}%
 }
 \makeatother
+
+% Reset equation numbering per section
+\numberwithin{equation}{section}
 
 % ===================================================================
 % PAGE LAYOUT & HEADER/FOOTER CONFIGURATION
@@ -177,6 +183,22 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{claim}[theorem]{Claim}
 
+% mdframed style for claim box (Evan Chen-style rounded box)
+\mdfdefinestyle{mdclaimbox}{%
+    roundcorner=5pt,
+    linewidth=1.2pt,
+    skipabove=10pt,
+    skipbelow=10pt,
+    innertopmargin=7pt,
+    innerbottommargin=7pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    linecolor=TLZDeepIndigo!70,
+    backgroundcolor=TLZDeepIndigo!5
+}
+
+\surroundwithmdframed[style=mdclaimbox]{claim}
+
 % Definition style theorems (upright text)
 \theoremstyle{TLZDefinition}
 \newtheorem{problem}[theorem]{Problem}
@@ -210,3 +232,18 @@
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\paren}[1]{\left( #1 \right)}
 \newcommand{\bracket}[1]{\left[ #1 \right]}
+
+% ===================================================================
+% CYCLIC SUM WITH SQUIGGLY UNDERLINE
+% ===================================================================
+% Usage: \cycsum{expression}  or  \cycsum[text]{expression}
+% The squiggly line appears beneath "cyc" under the sum.
+% Examples:
+%   \cycsum{\frac{a}{b}}          -> sum_{cyc} with squiggly line, then fraction
+%   \cycsum[cyc]{\frac{a}{b}}     -> sum_{cyc} with squiggly line, then fraction
+%   \cycsum[sym]{\frac{a}{b}}     -> sum_{sym} with squiggly line, then fraction
+% ===================================================================
+
+\newcommand{\cycsum}[2][cyc]{%
+  \sum_{\substack{\text{#1}\\[-2pt] \sim}} #2%
+}
