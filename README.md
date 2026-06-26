@@ -22,3 +22,8 @@ My own modular LaTeX style package, TLZLaTexPack.sty is stored here. Commiting t
 
 **.gitignore:**
 MiKTeX compiler creates temporary files; I let Git ignore them for some extra efficiency when compiling and decluttering of workspace.
+
+### OTHER:
+
+**Privacy:**
+Some documents that contain MO content but are personal are not stored in this repository but rather in a private one.
