@@ -17,6 +17,9 @@ This is used to host images I refer to if diagrams are not convenient to be put 
 **Main:**
 Find my math documents in here.
 
+**Skills:**
+This is my library of AI harnasses/skills I use for math training.
+
 **Style file:**
 My own modular LaTeX style package, TLZLaTexPack.sty is stored here. Commiting to GitHub will NOT update the package version, see line 20 in code to see how to update.
 
