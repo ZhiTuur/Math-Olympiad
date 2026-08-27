@@ -15,7 +15,7 @@ General documents in connection with MO without containing actual math is stored
 This is used to host images I refer to if diagrams are not convenient to be put on pdf's themselves.
 
 **Main:**
-Find my math documents in here.
+Find my math documents in here; pdf files aswell as either Markdown or Latex.
 
 **Skills:**
 This is my library of AI harnasses/skills I use for math training.
